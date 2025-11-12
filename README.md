@@ -14,7 +14,7 @@ A full-stack movie management application that allows users to browse movies, ma
 - [Project Structure](#project-structure)
 - [Documentation](#documentation)
 - [Future Development](#future-development)
-- [Contributing](#contributing)
+- [Contact](#Contact)
 
 ## 🎯 Overview
 
@@ -226,23 +226,13 @@ A mobile version of the application is planned using WinDev platform. Developmen
 - Integration with external movie APIs
 - Enhanced authentication (JWT, OAuth)
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 📝 License
 
 This project is currently unlicensed. Please contact the repository owner for usage rights.
 
-## 👥 Authors
+## 👨‍💻 Developer
 
-- Development Team - Initial work
+- Developed by zakicodes or Zakariae Azhari.
 
 ## 🐛 Known Issues
 
@@ -252,7 +242,7 @@ This project is currently unlicensed. Please contact the repository owner for us
 
 ## 📧 Contact
 
-For questions or support, please open an issue in the repository.
+Checkout my github for more projects, you can also checkout my protfolio zakicodes.engineer to know me better
 
 ---
 
