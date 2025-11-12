@@ -3,12 +3,9 @@ package com.example.backend.controller;
 import com.example.backend.models.MovieModel;
 import com.example.backend.models.UserModel;
 import com.example.backend.services.MovieActions;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/api/movieActions")
 public class MovieActionsController {
     private final MovieActions movieActions;

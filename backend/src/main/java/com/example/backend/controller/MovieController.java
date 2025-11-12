@@ -6,7 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/Movies")
+@RequestMapping("/api/movies")
 public class MovieController {
     private final MovieService movieService;
     public MovieController(MovieService movieService) {
@@ -25,7 +25,7 @@ public class MovieController {
         return movieService.addNewMovie(movieModel);
     }
     @PutMapping("/{id}")
-    public MovieModel updateMovie(@Valid @PathVariable  Long id, MovieModel movieModel){
+    public MovieModel updateMovie(@PathVariable  Long id, @Valid @RequestBody MovieModel movieModel){
         return movieService.updateMovie(id,movieModel);
     }
     @DeleteMapping("/{id}")
