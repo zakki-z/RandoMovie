@@ -1,20 +1,36 @@
 package com.example.backend.services;
 
+import com.example.backend.DTOMapper.MovieDTOMapper;
+import com.example.backend.dto.MovieDTO;
+import com.example.backend.exceptions.MovieNotFoundException;
 import com.example.backend.models.MovieModel;
 import com.example.backend.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 @Service
 public class MovieService {
     private final MovieRepository movieRepository;
-    public MovieService(MovieRepository movieRepository) {
+    private final MovieDTOMapper movieDTOMapper;
+    public MovieService(MovieRepository movieRepository, MovieDTOMapper movieDTOMapper){
         this.movieRepository = movieRepository;
+        this.movieDTOMapper = movieDTOMapper;
+
     }
-    public MovieModel getMovieById(Long movieId){
-        return movieRepository.findById(movieId).orElse(null);
+    public MovieDTO getMovieById(Long movieId){
+        return movieRepository.findById(movieId)
+                .map(movieDTOMapper)
+                .orElseThrow(()->new MovieNotFoundException(String.format("Movie with id %s not found", movieId)
+                ));
     }
-    public Iterable<MovieModel> getAllMovies(){
-        return movieRepository.findAll();
+    public List<MovieDTO> getAllMovies(){
+        return movieRepository.findAll()
+                .stream()
+                .map(movieDTOMapper)
+                .collect(Collectors.toList());
     }
     public MovieModel addNewMovie(MovieModel movieModel){
         return movieRepository.save(movieModel);

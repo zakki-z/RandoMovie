@@ -1,9 +1,12 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.MovieDTO;
 import com.example.backend.models.MovieModel;
 import com.example.backend.services.MovieService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/movies")
@@ -13,11 +16,11 @@ public class MovieController {
         this.movieService = movieService;
     }
     @GetMapping("/{id}")
-    public MovieModel getMovieById(@PathVariable Long id){
+    public MovieDTO getMovieById(@PathVariable Long id){
         return movieService.getMovieById(id);
     }
     @GetMapping
-    public Iterable<MovieModel> getAllMovies(){
+    public List<MovieDTO> getAllMovies(){
         return movieService.getAllMovies();
     }
     @PostMapping
