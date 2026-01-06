@@ -5,6 +5,7 @@ import com.example.backend.dto.MovieDTO;
 import com.example.backend.exceptions.MovieNotFoundException;
 import com.example.backend.models.MovieModel;
 import com.example.backend.repository.MovieRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,9 +27,10 @@ public class MovieService {
     public List<MovieModel> getAllMovies(){
         return movieRepository.findAll();
     }
+    @PreAuthorize("hasRole('ADMIN')")
     public MovieModel addNewMovie(MovieModel movieModel){
         return movieRepository.save(movieModel);
-    }
+    } @PreAuthorize("hasRole('ADMIN')")
     public MovieModel updateMovie(long id, MovieModel UpdatedMovie){
         MovieModel existingMovie = movieRepository.findById(id).orElse(null);
         assert existingMovie != null;
@@ -41,6 +43,7 @@ public class MovieService {
         existingMovie.setMovieYear(UpdatedMovie.getMovieYear());
         return movieRepository.save(existingMovie);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteMovieById(Long movieId){
         movieRepository.deleteById(movieId);
     }
