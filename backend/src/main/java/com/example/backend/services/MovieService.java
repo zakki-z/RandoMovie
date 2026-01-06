@@ -20,17 +20,11 @@ public class MovieService {
         this.movieDTOMapper = movieDTOMapper;
 
     }
-    public MovieDTO getMovieById(Long movieId){
-        return movieRepository.findById(movieId)
-                .map(movieDTOMapper)
-                .orElseThrow(()->new MovieNotFoundException(String.format("Movie with id %s not found", movieId)
-                ));
+    public MovieModel getMovieById(Long movieId){
+        return movieRepository.findById(movieId).orElse(null);
     }
-    public List<MovieDTO> getAllMovies(){
-        return movieRepository.findAll()
-                .stream()
-                .map(movieDTOMapper)
-                .collect(Collectors.toList());
+    public List<MovieModel> getAllMovies(){
+        return movieRepository.findAll();
     }
     public MovieModel addNewMovie(MovieModel movieModel){
         return movieRepository.save(movieModel);

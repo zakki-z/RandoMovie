@@ -16,11 +16,11 @@ public class MovieController {
         this.movieService = movieService;
     }
     @GetMapping("/{id}")
-    public MovieDTO getMovieById(@PathVariable Long id){
+    public MovieModel getMovieById(@PathVariable Long id){
         return movieService.getMovieById(id);
     }
     @GetMapping
-    public List<MovieDTO> getAllMovies(){
+    public List<MovieModel> getAllMovies(){
         return movieService.getAllMovies();
     }
     @PostMapping
